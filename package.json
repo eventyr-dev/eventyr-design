@@ -1,5 +1,5 @@
 {
-  "name": "eventyr-dev/eventyr-design",
+  "name": "@eventyr-dev/eventyr-design",
   "version": "0.0.1",
   "description": "A minimalist, nature-inspired React design system.",
   "type": "module",

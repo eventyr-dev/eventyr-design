@@ -6,7 +6,7 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [
     react(),
-    dts({ 
+    dts({
       include: ['components'],
       insertTypesEntry: true,
     })
@@ -14,8 +14,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'components/index.ts'),
-      name: 'NordicUI',
-      fileName: (format) => `nordic-ui.${format}.js`,
+      name: 'EventyrDesign',
+      fileName: (format) => `eventyr-design.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'lucide-react'],
