@@ -19,6 +19,7 @@ import { Input } from './components/Input';
 import { Card } from './components/Card';
 import { Badge } from './components/Badge';
 import { Carousel, SlideData } from './components/Carousel';
+import { CookieConsent } from './components/CookieConsent';
 import { SectionHeader, ColorSwatch } from './components/DemoHelpers';
 
 export default function App() {
@@ -317,6 +318,29 @@ export default function App() {
                         Flat / Border
                       </div>
                     </div>
+                  </Card>
+
+                  {/* Cookie Consent Demo */}
+                  <Card className="col-span-1 lg:col-span-2 bg-stone-100 border-dashed">
+                    <div className="flex items-center justify-between border-b border-stone-200 pb-4 mb-6">
+                      <h3 className="font-semibold text-stone-700">Cookie Consent Banner</h3>
+                      <Badge variant="neutral">Interactive</Badge>
+                    </div>
+
+                    <div className="relative min-h-[200px] bg-stone-200 rounded-lg overflow-hidden flex items-end justify-center border border-stone-300">
+                      <div className="absolute inset-0 flex items-center justify-center text-stone-400 text-sm font-mono">
+                        [Page Content Area]
+                      </div>
+                      <CookieConsent
+                        fixed={false}
+                        variant="detailed"
+                        onAccept={() => console.log('Accepted')}
+                        onDecline={() => console.log('Declined')}
+                      />
+                    </div>
+                    <p className="text-xs text-stone-500 mt-4">
+                      * Shown here with <code>fixed=false</code> for demonstration. Default is fixed to viewport bottom.
+                    </p>
                   </Card>
                 </div>
               </div>
