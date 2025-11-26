@@ -31,11 +31,11 @@ export const Radio: React.FC<RadioProps> = ({
                 <div className={`
           w-5 h-5 rounded-full border-2 transition-all flex items-center justify-center
           ${checked
-                        ? 'bg-white border-emerald-600'
-                        : 'bg-white border-stone-300 hover:border-emerald-400'
+                        ? 'bg-white border-nordic-sage'
+                        : 'bg-white border-stone-300 hover:border-nordic-sage/50'
                     }
         `}>
-                    {checked && <div className="w-2.5 h-2.5 rounded-full bg-emerald-600" />}
+                    {checked && <div className="w-2.5 h-2.5 rounded-full bg-nordic-sage" />}
                 </div>
             </div>
             {label && <span className="text-sm text-stone-700">{label}</span>}

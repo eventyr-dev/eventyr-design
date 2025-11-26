@@ -22,7 +22,7 @@ export const FormField: React.FC<FormFieldProps> = ({
             {label && (
                 <label className="text-sm font-medium text-stone-700 mb-2">
                     {label}
-                    {required && <span className="text-red-500 ml-1">*</span>}
+                    {required && <span className="text-nordic-berry ml-1">*</span>}
                 </label>
             )}
             {children}
@@ -30,7 +30,7 @@ export const FormField: React.FC<FormFieldProps> = ({
                 <span className="text-xs text-stone-500 mt-1">{helperText}</span>
             )}
             {error && (
-                <span className="text-xs text-red-600 mt-1">{error}</span>
+                <span className="text-xs text-nordic-berry mt-1">{error}</span>
             )}
         </div>
     );

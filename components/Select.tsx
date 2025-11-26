@@ -34,8 +34,8 @@ export const Select: React.FC<SelectProps> = ({
                     className={`
             w-full px-4 py-3 pr-10 rounded-lg border transition-all appearance-none
             ${error
-                            ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-200'
-                            : 'border-stone-300 bg-stone-50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100'
+                            ? 'border-nordic-berry/30 bg-nordic-berry/5 focus:border-nordic-berry focus:ring-2 focus:ring-nordic-berry/20'
+                            : 'border-stone-300 bg-stone-50 focus:border-nordic-sage focus:ring-2 focus:ring-nordic-sage/20'
                         }
             text-stone-900
             focus:outline-none
@@ -55,7 +55,7 @@ export const Select: React.FC<SelectProps> = ({
                 />
             </div>
             {error && (
-                <span className="text-xs text-red-600 mt-1">{error}</span>
+                <span className="text-xs text-nordic-berry mt-1">{error}</span>
             )}
         </div>
     );
