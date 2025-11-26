@@ -21,6 +21,11 @@ import { Card } from './components/Card';
 import { Badge } from './components/Badge';
 import { Carousel, SlideData } from './components/Carousel';
 import { CookieConsent } from './components/CookieConsent';
+import { Box } from './components/Box';
+import { Container } from './components/Container';
+import { Stack } from './components/Stack';
+import { Grid, Col } from './components/Grid';
+import { Divider } from './components/Divider';
 import { SectionHeader, ColorSwatch } from './components/DemoHelpers';
 
 export default function App() {
@@ -547,6 +552,151 @@ import { ArrowRight } from 'lucide-react';
 />`}
                       </div>
                     </details>
+                  </Card>
+
+                  {/* Layout Primitives */}
+                  <Card className="col-span-1 lg:col-span-2">
+                    <h3 className="font-semibold text-stone-700 border-b pb-2 border-stone-100 mb-6">Layout & Primitives</h3>
+                    <p className="text-sm text-stone-600 mb-6">Structural components for arranging and organizing content.</p>
+
+                    <div className="space-y-8">
+                      {/* Box */}
+                      <div>
+                        <h4 className="text-sm font-bold text-stone-700 mb-3">Box - Basic Wrapper</h4>
+                        <div className="flex gap-4 flex-wrap">
+                          <Box padding="sm" bg="stone" className="border border-stone-300 rounded">
+                            <p className="text-xs text-stone-700">padding="sm"</p>
+                          </Box>
+                          <Box padding="md" bg="emerald" className="border border-emerald-300 rounded">
+                            <p className="text-xs text-emerald-700">padding="md"</p>
+                          </Box>
+                          <Box padding="lg" bg="white" className="border border-stone-300 rounded shadow-sm">
+                            <p className="text-xs text-stone-700">padding="lg"</p>
+                          </Box>
+                        </div>
+                        <details className="mt-3">
+                          <summary className="cursor-pointer text-xs text-stone-600 hover:text-emerald-700">View Code</summary>
+                          <div className="bg-stone-900 text-stone-100 p-3 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                            {`import { Box } from '@eventyr-dev/eventyr-design';
+
+<Box padding="md" bg="stone">Content</Box>`}
+                          </div>
+                        </details>
+                      </div>
+
+                      {/* Container */}
+                      <div>
+                        <h4 className="text-sm font-bold text-stone-700 mb-3">Container - Max Width Control</h4>
+                        <div className="bg-stone-100 p-4 rounded overflow-hidden">
+                          <Container maxWidth="md" className="bg-white p-4 rounded border border-stone-300">
+                            <p className="text-xs text-stone-700 text-center">maxWidth="md" - Content is centered with responsive padding</p>
+                          </Container>
+                        </div>
+                        <details className="mt-3">
+                          <summary className="cursor-pointer text-xs text-stone-600 hover:text-emerald-700">View Code</summary>
+                          <div className="bg-stone-900 text-stone-100 p-3 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                            {`import { Container } from '@eventyr-dev/eventyr-design';
+
+<Container maxWidth="lg">Content</Container>`}
+                          </div>
+                        </details>
+                      </div>
+
+                      {/* Stack */}
+                      <div>
+                        <h4 className="text-sm font-bold text-stone-700 mb-3">Stack - Flexbox Utility</h4>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <p className="text-xs text-stone-500 mb-2">Vertical (default)</p>
+                            <Stack spacing="sm" className="bg-stone-100 p-3 rounded">
+                              <div className="bg-emerald-600 text-white px-3 py-2 rounded text-xs">Item 1</div>
+                              <div className="bg-emerald-600 text-white px-3 py-2 rounded text-xs">Item 2</div>
+                              <div className="bg-emerald-600 text-white px-3 py-2 rounded text-xs">Item 3</div>
+                            </Stack>
+                          </div>
+                          <div>
+                            <p className="text-xs text-stone-500 mb-2">Horizontal</p>
+                            <Stack direction="horizontal" spacing="sm" className="bg-stone-100 p-3 rounded">
+                              <div className="bg-stone-600 text-white px-3 py-2 rounded text-xs">A</div>
+                              <div className="bg-stone-600 text-white px-3 py-2 rounded text-xs">B</div>
+                              <div className="bg-stone-600 text-white px-3 py-2 rounded text-xs">C</div>
+                            </Stack>
+                          </div>
+                        </div>
+                        <details className="mt-3">
+                          <summary className="cursor-pointer text-xs text-stone-600 hover:text-emerald-700">View Code</summary>
+                          <div className="bg-stone-900 text-stone-100 p-3 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                            {`import { Stack } from '@eventyr-dev/eventyr-design';
+
+<Stack spacing="md" align="center">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack>`}
+                          </div>
+                        </details>
+                      </div>
+
+                      {/* Grid */}
+                      <div>
+                        <h4 className="text-sm font-bold text-stone-700 mb-3">Grid - Responsive Layout</h4>
+                        <Grid cols={12} gap="md" className="bg-stone-100 p-3 rounded">
+                          <Col span={12} className="bg-emerald-600 text-white p-3 rounded text-xs text-center">12 columns</Col>
+                          <Col span={6} className="bg-stone-600 text-white p-3 rounded text-xs text-center">6 cols</Col>
+                          <Col span={6} className="bg-stone-600 text-white p-3 rounded text-xs text-center">6 cols</Col>
+                          <Col span={4} className="bg-emerald-700 text-white p-3 rounded text-xs text-center">4</Col>
+                          <Col span={4} className="bg-emerald-700 text-white p-3 rounded text-xs text-center">4</Col>
+                          <Col span={4} className="bg-emerald-700 text-white p-3 rounded text-xs text-center">4</Col>
+                        </Grid>
+                        <details className="mt-3">
+                          <summary className="cursor-pointer text-xs text-stone-600 hover:text-emerald-700">View Code</summary>
+                          <div className="bg-stone-900 text-stone-100 p-3 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                            {`import { Grid, Col } from '@eventyr-dev/eventyr-design';
+
+<Grid cols={12} gap="md">
+  <Col span={8}>Main</Col>
+  <Col span={4}>Sidebar</Col>
+</Grid>`}
+                          </div>
+                        </details>
+                      </div>
+
+                      {/* Divider */}
+                      <div>
+                        <h4 className="text-sm font-bold text-stone-700 mb-3">Divider - Section Separator</h4>
+                        <div className="space-y-4">
+                          <div>
+                            <p className="text-xs text-stone-500 mb-2">Horizontal (default)</p>
+                            <div className="bg-stone-100 p-4 rounded">
+                              <p className="text-xs text-stone-700">Section 1</p>
+                              <Divider className="my-3" />
+                              <p className="text-xs text-stone-700">Section 2</p>
+                              <Divider thickness="medium" color="emerald" className="my-3" />
+                              <p className="text-xs text-stone-700">Section 3</p>
+                            </div>
+                          </div>
+                          <div>
+                            <p className="text-xs text-stone-500 mb-2">Vertical</p>
+                            <div className="bg-stone-100 p-4 rounded flex items-center gap-4 h-20">
+                              <div className="text-xs text-stone-700">Left</div>
+                              <Divider orientation="vertical" />
+                              <div className="text-xs text-stone-700">Middle</div>
+                              <Divider orientation="vertical" thickness="thick" color="dark" />
+                              <div className="text-xs text-stone-700">Right</div>
+                            </div>
+                          </div>
+                        </div>
+                        <details className="mt-3">
+                          <summary className="cursor-pointer text-xs text-stone-600 hover:text-emerald-700">View Code</summary>
+                          <div className="bg-stone-900 text-stone-100 p-3 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                            {`import { Divider } from '@eventyr-dev/eventyr-design';
+
+<Divider />
+<Divider orientation="vertical" thickness="medium" />
+<Divider color="emerald" />`}
+                          </div>
+                        </details>
+                      </div>
+                    </div>
                   </Card>
                 </div>
               </div>
