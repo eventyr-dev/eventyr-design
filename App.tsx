@@ -10,7 +10,8 @@ import {
   Menu,
   Bell,
   User,
-  Terminal
+  Terminal,
+  Layers
 } from 'lucide-react';
 
 // Component Imports
@@ -27,6 +28,7 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
+    { id: 'foundations', label: 'Foundations', icon: Layers },
     { id: 'colors', label: 'Palette', icon: Droplets },
     { id: 'typography', label: 'Typography', icon: Wind },
     { id: 'components', label: 'Components', icon: Leaf },
@@ -127,6 +129,145 @@ export default function App() {
         {/* Main Content Area */}
         <main className="flex-1 p-6 lg:p-12 overflow-y-auto bg-stone-50">
           <div className="max-w-5xl mx-auto">
+
+            {/* FOUNDATIONS SECTION */}
+            {activeTab === 'foundations' && (
+              <div className="animate-fadeIn">
+                <SectionHeader
+                  title="Design Tokens"
+                  description="The invisible foundation of the design system. These tokens ensure consistency across all components and applications."
+                  icon={Layers}
+                />
+
+                <div className="space-y-8">
+                  {/* Spacing */}
+                  <Card>
+                    <h3 className="text-lg font-semibold mb-4 text-stone-700">Spacing Scale</h3>
+                    <p className="text-stone-600 text-sm mb-6">A consistent spacing scale based on 4px increments ensures visual rhythm and alignment.</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {[
+                        { name: 'xs', pixels: '4px', tailwind: '1' },
+                        { name: 'sm', pixels: '8px', tailwind: '2' },
+                        { name: 'md', pixels: '16px', tailwind: '4' },
+                        { name: 'lg', pixels: '24px', tailwind: '6' },
+                        { name: 'xl', pixels: '32px', tailwind: '8' },
+                        { name: '2xl', pixels: '48px', tailwind: '12' },
+                        { name: '3xl', pixels: '64px', tailwind: '16' },
+                        { name: '4xl', pixels: '96px', tailwind: '24' }
+                      ].map((item) => (
+                        <div key={item.name} className="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                          <div className="mb-2">
+                            <div className="bg-emerald-600 rounded" style={{ height: '8px', width: item.pixels }}></div>
+                          </div>
+                          <p className="text-xs font-bold text-stone-800">{item.name}</p>
+                          <p className="text-xs text-stone-500">{item.pixels}</p>
+                          <code className="text-xs text-emerald-700 font-mono">p-{item.tailwind}</code>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+
+                  {/* Shadows */}
+                  <Card>
+                    <h3 className="text-lg font-semibold mb-4 text-stone-700">Elevation & Shadows</h3>
+                    <p className="text-stone-600 text-sm mb-6">Subtle shadows create depth without being harsh. Used for cards, modals, and dropdowns.</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                      {[
+                        { name: 'None', class: 'shadow-none', desc: 'Flat elements' },
+                        { name: 'SM', class: 'shadow-sm', desc: 'Subtle lift' },
+                        { name: 'MD', class: 'shadow-md', desc: 'Standard cards' },
+                        { name: 'LG', class: 'shadow-lg', desc: 'Modals, popovers' },
+                        { name: 'XL', class: 'shadow-xl', desc: 'Overlays' },
+                        { name: '2XL', class: 'shadow-2xl', desc: 'Hero elements' }
+                      ].map((item) => (
+                        <div key={item.name} className="text-center">
+                          <div className={`bg-white p-6 rounded-lg border border-stone-100 ${item.class} mb-3`}>
+                            <div className="w-12 h-12 mx-auto bg-stone-200 rounded"></div>
+                          </div>
+                          <p className="text-xs font-bold text-stone-800">{item.name}</p>
+                          <p className="text-xs text-stone-500">{item.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+
+                  {/* Border Radius */}
+                  <Card>
+                    <h3 className="text-lg font-semibold mb-4 text-stone-700">Border Radius</h3>
+                    <p className="text-stone-600 text-sm mb-6">Consistent corner rounding creates visual harmony. Use larger radii for cards, smaller for inputs.</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {[
+                        { name: 'None', class: 'rounded-none', value: '0px' },
+                        { name: 'SM', class: 'rounded-sm', value: '2px' },
+                        { name: 'Default', class: 'rounded', value: '4px' },
+                        { name: 'MD', class: 'rounded-md', value: '6px' },
+                        { name: 'LG', class: 'rounded-lg', value: '8px' },
+                        { name: 'XL', class: 'rounded-xl', value: '12px' },
+                        { name: '2XL', class: 'rounded-2xl', value: '16px' },
+                        { name: 'Full', class: 'rounded-full', value: '9999px' }
+                      ].map((item) => (
+                        <div key={item.name} className="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                          <div className={`bg-emerald-600 w-16 h-16 mb-2 ${item.class}`}></div>
+                          <p className="text-xs font-bold text-stone-800">{item.name}</p>
+                          <p className="text-xs text-stone-500">{item.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+
+                  {/* Breakpoints */}
+                  <Card>
+                    <h3 className="text-lg font-semibold mb-4 text-stone-700">Responsive Breakpoints</h3>
+                    <p className="text-stone-600 text-sm mb-6">Standardized screen widths for consistent responsive behavior across all components.</p>
+                    <div className="space-y-3">
+                      {[
+                        { name: 'Mobile', breakpoint: 'Default', width: '< 640px', desc: 'Phones, small devices' },
+                        { name: 'SM', breakpoint: 'sm:', width: '≥ 640px', desc: 'Small tablets' },
+                        { name: 'MD', breakpoint: 'md:', width: '≥ 768px', desc: 'Tablets, landscape phones' },
+                        { name: 'LG', breakpoint: 'lg:', width: '≥ 1024px', desc: 'Laptops, small desktops' },
+                        { name: 'XL', breakpoint: 'xl:', width: '≥ 1280px', desc: 'Desktops' },
+                        { name: '2XL', breakpoint: '2xl:', width: '≥ 1536px', desc: 'Large screens' }
+                      ].map((item) => (
+                        <div key={item.name} className="flex items-center justify-between p-4 bg-stone-50 rounded-lg border border-stone-200">
+                          <div className="flex items-center gap-4 flex-1">
+                            <code className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded font-mono text-xs font-bold min-w-[60px] text-center">{item.breakpoint}</code>
+                            <div>
+                              <p className="text-sm font-semibold text-stone-800">{item.name}</p>
+                              <p className="text-xs text-stone-500">{item.desc}</p>
+                            </div>
+                          </div>
+                          <code className="text-sm text-stone-600 font-mono">{item.width}</code>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+
+                  {/* Z-Index */}
+                  <Card>
+                    <h3 className="text-lg font-semibold mb-4 text-stone-700">Z-Index Layers</h3>
+                    <p className="text-stone-600 text-sm mb-6">Defined stacking order prevents z-index conflicts and ensures predictable layering.</p>
+                    <div className="space-y-2">
+                      {[
+                        { name: 'Base', value: '0', usage: 'Default layer' },
+                        { name: 'Dropdown', value: '10', usage: 'Dropdowns, tooltips' },
+                        { name: 'Sticky', value: '20', usage: 'Sticky headers, fixed nav' },
+                        { name: 'Modal Backdrop', value: '40', usage: 'Modal overlays' },
+                        { name: 'Modal', value: '50', usage: 'Modal dialogs' },
+                        { name: 'Toast', value: '60', usage: 'Notifications, alerts' }
+                      ].map((item) => (
+                        <div key={item.name} className="flex items-center justify-between p-3 bg-stone-50 rounded border border-stone-200">
+                          <div className="flex items-center gap-3">
+                            <code className="bg-stone-200 text-stone-800 px-2 py-1 rounded font-mono text-xs font-bold w-12 text-center">{item.value}</code>
+                            <p className="text-sm font-semibold text-stone-800">{item.name}</p>
+                          </div>
+                          <p className="text-xs text-stone-500">{item.usage}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            )}
 
             {/* COLORS SECTION */}
             {activeTab === 'colors' && (
