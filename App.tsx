@@ -334,6 +334,15 @@ export default function App() {
                 <div className="space-y-8">
                   <Card>
                     <h3 className="font-semibold text-stone-700 mb-4">1. Installation</h3>
+                    <p className="text-stone-600 mb-4 text-sm">
+                      Create an <code className="bg-stone-100 px-1 py-0.5 rounded text-stone-800 font-mono">.npmrc</code> file in your project root to point to the GitHub Package Registry:
+                    </p>
+                    <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-sm overflow-x-auto mb-4">
+                      @eventyr-dev:registry=https://npm.pkg.github.com
+                    </div>
+                    <p className="text-stone-600 mb-4 text-sm">
+                      Then install the package:
+                    </p>
                     <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                       npm install @eventyr-dev/eventyr-design lucide-react
                     </div>
