@@ -26,11 +26,25 @@ import { Container } from './components/Container';
 import { Stack } from './components/Stack';
 import { Grid, Col } from './components/Grid';
 import { Divider } from './components/Divider';
+import { Textarea } from './components/Textarea';
+import { Checkbox } from './components/Checkbox';
+import { Radio } from './components/Radio';
+import { Switch } from './components/Switch';
+import { Select } from './components/Select';
+import { Slider } from './components/Slider';
+import { FormField } from './components/FormField';
 import { SectionHeader, ColorSwatch } from './components/DemoHelpers';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('components');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Form demo states
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState('option1');
+  const [switchOn, setSwitchOn] = useState(false);
+  const [selectValue, setSelectValue] = useState('');
+  const [sliderValue, setSliderValue] = useState(50);
 
   const navItems = [
     { id: 'foundations', label: 'Foundations', icon: Layers },
@@ -698,6 +712,183 @@ import { ArrowRight } from 'lucide-react';
                       </div>
                     </div>
                   </Card>
+                </div>
+              </div>
+            )}
+
+            {/* FORM ELEMENTS SECTION */}
+            {activeTab === 'components' && (
+              <div className="animate-fadeIn mt-8">
+                <h2 className="text-3xl font-bold text-stone-800 mb-2">Form Elements</h2>
+                <p className="text-stone-600 mb-8">Complete form components for data entry and user interaction.</p>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                  {/* Textarea */}
+                  <Card className="space-y-6">
+                    <h3 className="font-semibold text-stone-700 border-b pb-2 border-stone-100">Textarea</h3>
+                    <Textarea label="Description" placeholder="Enter your message..." rows={4} />
+                    <Textarea label="Error State" error="This field is required" defaultValue="Invalid content" />
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                        {`import { Textarea } from '@eventyr-dev/eventyr-design';
+
+<Textarea label="Description" placeholder="Enter..." rows={4} />
+<Textarea label="Error" error="Required" />`}
+                      </div>
+                    </details>
+                  </Card>
+
+                  {/* Checkbox & Radio */}
+                  <Card className="space-y-6">
+                    <h3 className="font-semibold text-stone-700 border-b pb-2 border-stone-100">Checkbox & Radio</h3>
+                    <div>
+                      <p className="text-xs text-stone-500 mb-2">Checkboxes</p>
+                      <div className="space-y-2">
+                        <Checkbox
+                          label="Subscribe to newsletter"
+                          checked={checkboxChecked}
+                          onChange={setCheckboxChecked}
+                        />
+                        <Checkbox label="Remember my preferences" checked={true} />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs text-stone-500 mb-2">Radio Buttons</p>
+                      <div className="space-y-2">
+                        <Radio label="Option 1" value="option1" checked={radioValue === 'option1'} onChange={setRadioValue} name="demo" />
+                        <Radio label="Option 2" value="option2" checked={radioValue === 'option2'} onChange={setRadioValue} name="demo" />
+                        <Radio label="Option 3" value="option3" checked={radioValue === 'option3'} onChange={setRadioValue} name="demo" />
+                      </div>
+                    </div>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                        {`import { Checkbox, Radio } from '@eventyr-dev/eventyr-design';
+
+<Checkbox label="Subscribe" checked={checked} onChange={setChecked} />
+<Radio label="Option 1" value="1" checked={value === '1'} onChange={setValue} />`}
+                      </div>
+                    </details>
+                  </Card>
+
+                  {/* Switch */}
+                  <Card className="space-y-6">
+                    <h3 className="font-semibold text-stone-700 border-b pb-2 border-stone-100">Switch / Toggle</h3>
+                    <div className="space-y-3">
+                      <Switch label="Enable notifications" checked={switchOn} onChange={setSwitchOn} />
+                      <Switch label="Dark mode" checked={false} />
+                      <Switch label="Disabled state" checked={true} disabled />
+                    </div>
+                    <p className="text-xs text-stone-500 italic">Current state: {switchOn ? 'ON' : 'OFF'}</p>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                        {`import { Switch } from '@eventyr-dev/eventyr-design';
+
+<Switch label="Enable" checked={on} onChange={setOn} />
+<Switch label="Disabled" disabled />`}
+                      </div>
+                    </details>
+                  </Card>
+
+                  {/* Select */}
+                  <Card className="space-y-6">
+                    <h3 className="font-semibold text-stone-700 border-b pb-2 border-stone-100">Select Dropdown</h3>
+                    <Select
+                      label="Country"
+                      options={[
+                        { value: 'no', label: 'Norway' },
+                        { value: 'se', label: 'Sweden' },
+                        { value: 'dk', label: 'Denmark' },
+                        { value: 'fi', label: 'Finland' }
+                      ]}
+                      value={selectValue}
+                      onChange={setSelectValue}
+                      placeholder="Select a country"
+                    />
+                    <Select
+                      label="Error State"
+                      options={[{ value: '1', label: 'Option' }]}
+                      error="Please select an option"
+                    />
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                        {`import { Select } from '@eventyr-dev/eventyr-design';
+
+<Select 
+  label="Country"
+  options={[
+    { value: 'no', label: 'Norway' },
+    { value: 'se', label: 'Sweden' }
+  ]}
+  value={value}
+  onChange={setValue}
+/>`}
+                      </div>
+                    </details>
+                  </Card>
+
+                  {/* Slider */}
+                  <Card className="col-span-1 lg:col-span-2 space-y-6">
+                    <h3 className="font-semibold text-stone-700 border-b pb-2 border-stone-100">Slider</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <Slider
+                        label="Volume"
+                        min={0}
+                        max={100}
+                        value={sliderValue}
+                        onChange={setSliderValue}
+                      />
+                      <Slider
+                        label="Brightness"
+                        min={0}
+                        max={100}
+                        value={75}
+                        showValue={true}
+                      />
+                    </div>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                        {`import { Slider } from '@eventyr-dev/eventyr-design';
+
+<Slider label="Volume" min={0} max={100} value={value} onChange={setValue} />`}
+                      </div>
+                    </details>
+                  </Card>
+
+                  {/* FormField Wrapper */}
+                  <Card className="col-span-1 lg:col-span-2 space-y-6">
+                    <h3 className="font-semibold text-stone-700 border-b pb-2 border-stone-100">FormField Wrapper</h3>
+                    <p className="text-sm text-stone-600">Wrap any input to add labels, helper text, and error messages.</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <FormField label="Email Address" required helperText="We'll never share your email">
+                        <Input placeholder="name@example.com" type="email" />
+                      </FormField>
+                      <FormField label="Password" required error="Password must be at least 8 characters">
+                        <Input placeholder="••••••••" type="password" />
+                      </FormField>
+                    </div>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2">
+                        {`import { FormField, Input } from '@eventyr-dev/eventyr-design';
+
+<FormField 
+  label="Email" 
+  required 
+  helperText="We'll never share your email"
+  error="Invalid email"
+>
+  <Input placeholder="name@example.com" />
+</FormField>`}
+                      </div>
+                    </details>
+                  </Card>
+
                 </div>
               </div>
             )}
