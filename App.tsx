@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { 
-  Leaf, 
-  Wind, 
-  Mountain, 
-  Droplets, 
-  ArrowRight, 
-  Check, 
-  X, 
-  Menu, 
+import {
+  Leaf,
+  Wind,
+  Mountain,
+  Droplets,
+  ArrowRight,
+  Check,
+  X,
+  Menu,
   Bell,
-  User
+  User,
+  Terminal
 } from 'lucide-react';
 
 // Component Imports
@@ -29,6 +30,7 @@ export default function App() {
     { id: 'typography', label: 'Typography', icon: Wind },
     { id: 'components', label: 'Components', icon: Leaf },
     { id: 'layout', label: 'Layout Examples', icon: Mountain },
+    { id: 'usage', label: 'Usage', icon: Terminal },
   ];
 
   // Data for Carousel Demo
@@ -60,7 +62,7 @@ export default function App() {
         <span className="font-bold text-lg flex items-center gap-2 text-stone-800">
           <Mountain className="text-emerald-700" /> Nordic UI
         </span>
-        <button 
+        <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="p-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors"
         >
@@ -69,7 +71,7 @@ export default function App() {
       </div>
 
       <div className="flex flex-col lg:flex-row min-h-screen">
-        
+
         {/* Sidebar Navigation */}
         <aside className={`
           fixed inset-0 z-10 bg-[#2F3E46] text-stone-300 w-64 transform transition-transform duration-300 ease-in-out
@@ -97,8 +99,8 @@ export default function App() {
                   }}
                   className={`
                     w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all
-                    ${activeTab === item.id 
-                      ? 'bg-[#354F52] text-white shadow-lg shadow-black/20' 
+                    ${activeTab === item.id
+                      ? 'bg-[#354F52] text-white shadow-lg shadow-black/20'
                       : 'hover:bg-[#354F52] hover:text-white'
                     }
                   `}
@@ -111,7 +113,7 @@ export default function App() {
 
             <div className="mt-auto pt-8 border-t border-[#354F52]">
               <p className="text-xs text-stone-400 mb-4 italic">
-                "Functionality in beauty, <br/>calm in chaos."
+                "Functionality in beauty, <br />calm in chaos."
               </p>
               <div className="flex items-center gap-2 text-xs text-stone-500">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -124,12 +126,12 @@ export default function App() {
         {/* Main Content Area */}
         <main className="flex-1 p-6 lg:p-12 overflow-y-auto bg-stone-50">
           <div className="max-w-5xl mx-auto">
-            
+
             {/* COLORS SECTION */}
             {activeTab === 'colors' && (
               <div className="animate-fadeIn">
-                <SectionHeader 
-                  title="Nature Palette" 
+                <SectionHeader
+                  title="Nature Palette"
                   description="Colors are desaturated and earthy. We avoid pure blacks (#000) in favor of deep stone greys and forest tones to reduce eye strain and create warmth."
                   icon={Droplets}
                 />
@@ -169,12 +171,12 @@ export default function App() {
             {/* TYPOGRAPHY SECTION */}
             {activeTab === 'typography' && (
               <div className="animate-fadeIn">
-                 <SectionHeader 
-                  title="Typography" 
+                <SectionHeader
+                  title="Typography"
                   description="We use a clean sans-serif stack (Inter, Roboto, System UI). The focus is on readability, generous line-heights, and distinct hierarchy."
                   icon={Wind}
                 />
-                
+
                 <Card className="mb-8">
                   <div className="space-y-8 overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline border-b border-stone-100 pb-6">
@@ -226,23 +228,23 @@ export default function App() {
             {/* COMPONENTS SECTION */}
             {activeTab === 'components' && (
               <div className="animate-fadeIn">
-                <SectionHeader 
-                  title="Interface Elements" 
+                <SectionHeader
+                  title="Interface Elements"
                   description="Primitive components designed with soft borders (rounded-lg), subtle shadows, and clear interaction states."
                   icon={Leaf}
                 />
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  
+
                   {/* Carousel Component Feature */}
                   <Card className="col-span-1 lg:col-span-2 bg-white overflow-hidden">
                     <div className="flex items-center justify-between border-b border-stone-100 pb-4 mb-6">
                       <h3 className="font-semibold text-stone-700">Carousel / Slider</h3>
                       <Badge variant="neutral">New</Badge>
                     </div>
-                    
+
                     <Carousel slides={carouselSlides} />
-                    
+
                     <div className="mt-6 p-4 bg-stone-50 rounded-lg border border-stone-200 text-sm text-stone-600">
                       <p>The carousel supports generic content, infinite looping logic, and nature-inspired navigation dots. The arrows appear on hover to maintain minimalism.</p>
                     </div>
@@ -269,7 +271,7 @@ export default function App() {
                     <Input label="Email Address" placeholder="name@company.com" type="email" />
                     <Input label="Password" type="password" placeholder="••••••••" />
                     <Input label="Error State" error="This field is required" defaultValue="Invalid input" />
-                    
+
                     <div className="flex items-center gap-3 mt-4">
                       <div className="w-5 h-5 rounded border border-stone-300 bg-white flex items-center justify-center text-emerald-600">
                         <Check size={14} strokeWidth={3} />
@@ -320,11 +322,67 @@ export default function App() {
               </div>
             )}
 
+            {/* USAGE SECTION */}
+            {activeTab === 'usage' && (
+              <div className="animate-fadeIn">
+                <SectionHeader
+                  title="Getting Started"
+                  description="How to install and integrate Nordic UI into your project."
+                  icon={Terminal}
+                />
+
+                <div className="space-y-8">
+                  <Card>
+                    <h3 className="font-semibold text-stone-700 mb-4">1. Installation</h3>
+                    <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+                      npm install @eventyr-dev/eventyr-design lucide-react
+                    </div>
+                  </Card>
+
+                  <Card>
+                    <h3 className="font-semibold text-stone-700 mb-4">2. Configuration</h3>
+                    <p className="text-stone-600 mb-4">
+                      Add the library to your <code className="bg-stone-100 px-1 py-0.5 rounded text-stone-800 font-mono text-sm">tailwind.config.js</code> content array to ensure styles are generated.
+                    </p>
+                    <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre">
+                      {`export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@eventyr-dev/eventyr-design/dist/**/*.{js,ts,jsx,tsx}"
+  ],
+  // ... rest of config
+}`}
+                    </div>
+                  </Card>
+
+                  <Card>
+                    <h3 className="font-semibold text-stone-700 mb-4">3. Usage</h3>
+                    <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre">
+                      {`import { Button, Card } from '@eventyr-dev/eventyr-design';
+import { ArrowRight } from 'lucide-react';
+
+function MyComponent() {
+  return (
+    <Card>
+      <h2 className="text-xl font-bold mb-4">Hello World</h2>
+      <Button variant="primary" icon={ArrowRight}>
+        Get Started
+      </Button>
+    </Card>
+  );
+}`}
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            )}
+
             {/* LAYOUT EXAMPLE */}
             {activeTab === 'layout' && (
               <div className="animate-fadeIn">
-                <SectionHeader 
-                  title="Layout Application" 
+                <SectionHeader
+                  title="Layout Application"
                   description="How these elements come together in a real interface. Notice the generous whitespace (padding-6 or 8) and limited color palette."
                   icon={Mountain}
                 />
@@ -361,7 +419,7 @@ export default function App() {
                           <h3 className="font-bold text-xl text-stone-800">Active Projects</h3>
                           <Button variant="outline" className="!py-2 !px-4 text-sm">Filter</Button>
                         </div>
-                        
+
                         <div className="space-y-4">
                           {[1, 2, 3].map((i) => (
                             <div key={i} className="flex items-center justify-between p-4 hover:bg-stone-50 rounded-lg transition-colors border border-transparent hover:border-stone-100 cursor-pointer">
@@ -391,16 +449,16 @@ export default function App() {
                       </Card>
 
                       <Card>
-                         <h3 className="font-bold text-stone-800 mb-4">Team Members</h3>
-                         <div className="flex -space-x-2 overflow-hidden mb-4">
-                            <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-300"></div>
-                            <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-400"></div>
-                            <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-500"></div>
-                            <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-600 flex items-center justify-center text-xs text-white font-medium">+3</div>
-                         </div>
-                         <Button variant="ghost" className="w-full text-sm justify-between px-0 hover:bg-transparent hover:text-emerald-700">
-                            Manage Team <ArrowRight size={16} />
-                         </Button>
+                        <h3 className="font-bold text-stone-800 mb-4">Team Members</h3>
+                        <div className="flex -space-x-2 overflow-hidden mb-4">
+                          <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-300"></div>
+                          <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-400"></div>
+                          <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-500"></div>
+                          <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-stone-600 flex items-center justify-center text-xs text-white font-medium">+3</div>
+                        </div>
+                        <Button variant="ghost" className="w-full text-sm justify-between px-0 hover:bg-transparent hover:text-emerald-700">
+                          Manage Team <ArrowRight size={16} />
+                        </Button>
                       </Card>
                     </div>
                   </div>
