@@ -247,7 +247,24 @@ export default function App() {
                     <Carousel slides={carouselSlides} />
 
                     <div className="mt-6 p-4 bg-stone-50 rounded-lg border border-stone-200 text-sm text-stone-600">
-                      <p>The carousel supports generic content, infinite looping logic, and nature-inspired navigation dots. The arrows appear on hover to maintain minimalism.</p>
+                      <p className="mb-3">The carousel supports generic content, infinite looping logic, and nature-inspired navigation dots. The arrows appear on hover to maintain minimalism.</p>
+                      <details className="mt-3">
+                        <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700">View Code</summary>
+                        <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2 whitespace-pre">
+                          {`import { Carousel } from '@eventyr-dev/eventyr-design';
+
+const slides = [
+  {
+    title: "Morning Mist",
+    content: "Experience the calm of Nordic dawn.",
+    icon: <Wind size={24} />,
+    bgClass: "bg-gradient-to-br from-stone-200 to-stone-300"
+  }
+];
+
+<Carousel slides={slides} />`}
+                        </div>
+                      </details>
                     </div>
                   </Card>
 
@@ -264,6 +281,19 @@ export default function App() {
                       <Button variant="ghost">Ghost Button</Button>
                       <Button variant="primary" icon={ArrowRight}>With Icon</Button>
                     </div>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2 whitespace-pre">
+                        {`import { Button } from '@eventyr-dev/eventyr-design';
+import { ArrowRight } from 'lucide-react';
+
+<Button>Primary Action</Button>
+<Button variant="secondary">Natural State</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost Button</Button>
+<Button variant="primary" icon={ArrowRight}>With Icon</Button>`}
+                      </div>
+                    </details>
                   </Card>
 
                   {/* Form Elements */}
@@ -279,6 +309,16 @@ export default function App() {
                       </div>
                       <span className="text-stone-700 text-sm">Remember me on this device</span>
                     </div>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2 whitespace-pre">
+                        {`import { Input } from '@eventyr-dev/eventyr-design';
+
+<Input label="Email Address" placeholder="name@company.com" type="email" />
+<Input label="Password" type="password" placeholder="••••••••" />
+<Input label="Error State" error="This field is required" defaultValue="Invalid input" />`}
+                      </div>
+                    </details>
                   </Card>
 
                   {/* Badges & Status */}
@@ -290,7 +330,18 @@ export default function App() {
                       <Badge variant="warning">Pending Review</Badge>
                       <Badge variant="error">Failed</Badge>
                     </div>
-                    <div className="p-4 bg-stone-50 rounded-lg border border-stone-200 flex gap-3">
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2 whitespace-pre">
+                        {`import { Badge } from '@eventyr-dev/eventyr-design';
+
+<Badge variant="neutral">Documentation</Badge>
+<Badge variant="success">Completed</Badge>
+<Badge variant="warning">Pending Review</Badge>
+<Badge variant="error">Failed</Badge>`}
+                      </div>
+                    </details>
+                    <div className="p-4 bg-stone-50 rounded-lg border border-stone-200 flex gap-3 mt-4">
                       <div className="bg-stone-200 p-1.5 rounded-full h-fit">
                         <Wind size={16} className="text-stone-600" />
                       </div>
@@ -341,6 +392,20 @@ export default function App() {
                     <p className="text-xs text-stone-500 mt-4">
                       * Shown here with <code>fixed=false</code> for demonstration. Default is fixed to viewport bottom.
                     </p>
+                    <details className="mt-4">
+                      <summary className="cursor-pointer font-semibold text-stone-700 hover:text-emerald-700 text-sm">View Code</summary>
+                      <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-xs overflow-x-auto mt-2 whitespace-pre">
+                        {`import { CookieConsent } from '@eventyr-dev/eventyr-design';
+
+<CookieConsent 
+  variant="detailed"
+  fixed={true}
+  onAccept={() => console.log('Accepted')}
+  onDecline={() => console.log('Declined')}
+  privacyPolicyUrl="/privacy"
+/>`}
+                      </div>
+                    </details>
                   </Card>
                 </div>
               </div>
