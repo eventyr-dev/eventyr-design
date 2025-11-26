@@ -344,7 +344,7 @@ export default function App() {
                       Then install the package:
                     </p>
                     <div className="bg-stone-900 text-stone-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
-                      npm install @eventyr-dev/eventyr-design lucide-react
+                      npm install @eventyr-dev/eventyr-design@0.0.1 lucide-react
                     </div>
                   </Card>
 
