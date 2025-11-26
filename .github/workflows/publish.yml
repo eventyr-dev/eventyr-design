@@ -21,7 +21,7 @@ jobs:
           
       - name: Update package version from release tag
         run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
+          VERSION=${GITHUB_REF#refs/tags/}
           npm version $VERSION --no-git-tag-version
         
       - name: Install Dependencies
